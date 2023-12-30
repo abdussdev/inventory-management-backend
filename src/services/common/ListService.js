@@ -8,9 +8,10 @@ const ListService = async (Request, DataModel, SearchArray) => {
         let data;
 
         if (searchvalue !== "0") {
+            let SearchQuery = { $for: SearchArray }
             data = await DataModel.aggregate([
                 { $match: { UserEmail: UserEmail } },
-                { $match: { $for: SearchArray } },
+                { $match: SearchQuery },
                 {
                     $facet:
                     {
