@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const BrandsSchema = new mongoose.Schema(
+const DataSchema = new mongoose.Schema(
     {
         UserEmail: { type: String },
         Name: { type: String, unique: true },
@@ -8,5 +8,5 @@ const BrandsSchema = new mongoose.Schema(
     { timestamps: true, versionKey: false }
 );
 
-const BrandsModel = mongoose.model("brands", BrandsSchema);
+const BrandsModel = mongoose.model("brands", DataSchema);
 module.exports = BrandsModel;

@@ -1,5 +1,5 @@
-const UsersModel = require("../../models/UsersModel")
-const OTPSModel = require("../../models/OTPSModel")
+const UsersModel = require("../../models/user/UsersModel")
+const OTPSModel = require("../../models/user/OTPSModel")
 
 const UserCreateService = require("../../services/user/UserCreateService")
 const UserDetailsService = require("../../services/user/UserDetailsService")
