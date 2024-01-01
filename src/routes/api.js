@@ -6,6 +6,7 @@ const CustomersController = require("../controllers/customers/CustomersControlle
 const SuppliersController = require("../controllers/suppliers/SuppliersController");
 const ExpenseTypesController = require("../controllers/expenses/ExpenseTypesController");
 const ExpensesController = require("../controllers/expenses/ExpensesController");
+const ProductsController = require("../controllers/products/ProductsController");
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 
 const router = express.Router();
@@ -55,5 +56,9 @@ router.post("/create-expense", AuthVerifyMiddleware, ExpensesController.CreateEx
 router.post("/update-expense/:id", AuthVerifyMiddleware, ExpensesController.UpdateExpense);
 router.get("/expenses-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpensesController.ExpensesList);
 
+//Products routes
+router.post("/create-product", AuthVerifyMiddleware, ProductsController.CreateProduct);
+router.post("/update-product/:id", AuthVerifyMiddleware, ProductsController.UpdateProduct);
+router.get("/products-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ProductsController.ProductsList);
 
 module.exports = router
