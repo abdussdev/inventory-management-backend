@@ -4,7 +4,8 @@ const BrandsController = require("../controllers/brands/BrandsController");
 const CategoriesController = require("../controllers/categories/CategoriesController");
 const CustomersController = require("../controllers/customers/CustomersController");
 const SuppliersController = require("../controllers/suppliers/SuppliersController");
-const ExpensTypesController = require("../controllers/expenses/ExpensTypesController");
+const ExpenseTypesController = require("../controllers/expenses/ExpenseTypesController");
+const ExpensesController = require("../controllers/expenses/ExpensesController");
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 
 const router = express.Router();
@@ -43,14 +44,16 @@ router.get("/suppliers-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddlewa
 router.get("/suppliers-dropdown", AuthVerifyMiddleware, SuppliersController.SuppliersDropDown);
 
 //Expense Types routes
-router.post("/create-expense-type", AuthVerifyMiddleware, ExpensTypesController.CreateExpense);
-router.post("/update-expense-type/:id", AuthVerifyMiddleware, ExpensTypesController.UpdateExpense);
-router.get("/expense-types-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpensTypesController.ExpensesList);
-router.get("/expense-types-dropdown", AuthVerifyMiddleware, ExpensTypesController.ExpensesDropDown);
+router.post("/create-expense-type", AuthVerifyMiddleware, ExpenseTypesController.CreateExpenseType);
+router.post("/update-expense-type/:id", AuthVerifyMiddleware, ExpenseTypesController.UpdateExpenseType);
+router.get("/expense-types-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypesList);
+router.get("/expense-types-dropdown", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypesDropDown);
 
 
 //Expenses routes
-
+router.post("/create-expense", AuthVerifyMiddleware, ExpensesController.CreateExpense);
+router.post("/update-expense/:id", AuthVerifyMiddleware, ExpensesController.UpdateExpense);
+router.get("/expenses-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpensesController.ExpensesList);
 
 
 module.exports = router

@@ -1,8 +1,8 @@
-const DataModel = require("../../models/expenses/ExpenseTypesModel");
+const DataModel = require("../../models/expenses/ExpensesModel");
 const CreateService = require("../../services/common/CreateService");
-const DropDownService = require("../../services/common/DropDownService");
-const ListService = require("../../services/common/ListService");
 const UpdateService = require("../../services/common/UpdateService");
+const ListOneJoinService = require("../../services/common/ListOneJoinService");
+
 
 exports.CreateExpense = async (req, res) => {
     let result = await CreateService(req, DataModel)
@@ -16,13 +16,8 @@ exports.UpdateExpense = async (req, res) => {
 
 exports.ExpensesList = async (req, res) => {
     let SearchRgx = { "$regex": req.params.searchKeyword, "$options": "i" }
-    let SearchArray = [{ Name: SearchRgx }]
-
-    let result = await ListService(req, DataModel, SearchArray)
-    res.status(200).json(result)
-};
-
-exports.ExpensesDropDown = async (req, res) => {
-    let result = await DropDownService(req, DataModel, { _id: 1, Name: 1 })
+    let SearchArray = [{ Note: SearchRgx }, { Amount: SearchRgx }, { 'Type.Name': SearchRgx }]
+    let JoinStage = { $lookup: { from: "expensetypes", localField: "TypeID", foreignField: "_id", as: "Type" } }
+    let result = await ListOneJoinService(req, DataModel, SearchArray, JoinStage)
     res.status(200).json(result)
 };

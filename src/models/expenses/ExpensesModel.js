@@ -3,10 +3,12 @@ const mongoose = require("mongoose");
 const DataSchema = new mongoose.Schema(
     {
         UserEmail: { type: String },
-        Name: { type: String, unique: true }
+        TypeID: { type: mongoose.Schema.Types.ObjectId },
+        Amount: { type: Number },
+        Note: { type: String }
     },
     { timestamps: true, versionKey: false }
 );
 
-const ExpenseTypesModel = mongoose.model("expenstypes", DataSchema);
-module.exports = ExpenseTypesModel;
+const ExpensesModel = mongoose.model("expenses", DataSchema);
+module.exports = ExpensesModel;

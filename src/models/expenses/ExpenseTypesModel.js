@@ -8,5 +8,5 @@ const DataSchema = new mongoose.Schema(
     { timestamps: true, versionKey: false }
 );
 
-const ExpenseTypesModel = mongoose.model("expenses", DataSchema);
+const ExpenseTypesModel = mongoose.model("expensetypes", DataSchema);
 module.exports = ExpenseTypesModel;

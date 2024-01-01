@@ -1,4 +1,4 @@
-const ListService = async (Request, DataModel, SearchArray) => {
+const ListOneJoinService = async (Request, DataModel, SearchArray, JoinStage) => {
     try {
         let UserEmail = Request.headers['email'];
         let pageNo = Number(Request.params.pageNo);
@@ -10,6 +10,7 @@ const ListService = async (Request, DataModel, SearchArray) => {
         if (searchvalue !== "0") {
             data = await DataModel.aggregate([
                 { $match: { UserEmail: UserEmail } },
+                JoinStage,
                 { $match: { $or: SearchArray } },
                 {
                     $facet:
@@ -22,6 +23,7 @@ const ListService = async (Request, DataModel, SearchArray) => {
         } else {
             data = await DataModel.aggregate([
                 { $match: { UserEmail: UserEmail } },
+                JoinStage,
                 {
                     $facet:
                     {
@@ -39,4 +41,4 @@ const ListService = async (Request, DataModel, SearchArray) => {
     }
 }
 
-module.exports = ListService;
+module.exports = ListOneJoinService;
