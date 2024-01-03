@@ -6,7 +6,7 @@ const DataSchema = new mongoose.Schema(
         Name: { type: String },
         Address: { type: String },
         Email: { type: String },
-        Phone: { type: String, unique: true },
+        Phone: { type: String },
     },
     { timestamps: true, versionKey: false }
 );
