@@ -2,6 +2,7 @@ const ParentModel = require("../../models/purchases/PurchasesModel");
 const ChildsModel = require("../../models/purchases/PurchaseProductsModel");
 const CreateParentChildsService = require("../../services/common/CreateParentChildsService");
 const ListOneJoinService = require("../../services/common/ListOneJoinService");
+const DeleteParentChildsService = require("../../services/common/DeleteParentChildsService");
 
 exports.CreatePurchase = async (req, res) => {
     let result = await CreateParentChildsService(req, ParentModel, ChildsModel, 'PurchaseID')
@@ -13,5 +14,10 @@ exports.PurchasesList = async (req, res) => {
     let JoinStage = { $lookup: { from: "suppliers", localField: "SupplierID", foreignField: "_id", as: "suppliers" } }
     let SearchArray = [{ Note: SearchRgx }, { 'suppliers.Address': SearchRgx }, { 'suppliers.Name': SearchRgx }, { 'suppliers.Email': SearchRgx }, { 'suppliers.Phone': SearchRgx }]
     let result = await ListOneJoinService(req, ParentModel, SearchArray, JoinStage)
+    res.status(200).json(result)
+};
+
+exports.PurchaseDelete = async (req, res) => {
+    let result = await DeleteParentChildsService(req, ParentModel, ChildsModel, 'PurchaseID')
     res.status(200).json(result)
 };

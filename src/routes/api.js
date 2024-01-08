@@ -67,16 +67,19 @@ router.get("/products-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddlewar
 //Purchases routes
 router.post("/create-purchase", AuthVerifyMiddleware, PurchasesController.CreatePurchase);
 router.get("/purchases-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, PurchasesController.PurchasesList);
+router.get("/purchase-delete/:id", AuthVerifyMiddleware, PurchasesController.PurchaseDelete);
 
 
 //Sales routes
 router.post("/create-sale", AuthVerifyMiddleware, SalesController.CreateSale);
 router.get("/sales-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, SalesController.SalesList);
+router.get("/sale-delete/:id", AuthVerifyMiddleware, SalesController.SaleDelete);
 
 
 //Returns routes
 router.post("/create-return", AuthVerifyMiddleware, ReturnsController.CreateReturn);
 router.get("/returns-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ReturnsController.ReturnsList);
+router.get("/return-delete/:id", AuthVerifyMiddleware, ReturnsController.ReturnDelete);
 
 
-module.exports = router
+module.exports = router;
