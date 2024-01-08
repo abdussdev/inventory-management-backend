@@ -8,11 +8,13 @@ const ExpenseTypesController = require("../controllers/expenses/ExpenseTypesCont
 const ExpensesController = require("../controllers/expenses/ExpensesController");
 const ProductsController = require("../controllers/products/ProductsController");
 const PurchasesController = require("../controllers/purchases/PurchasesController");
-const SalesController = require("../controllers/sales/SalesController");
+const SalesController = require("../controllers/sale/SalesController");
 const ReturnsController = require("../controllers/returns/ReturnsController");
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 
+
 const router = express.Router();
+
 
 // Users routes
 router.post("/register", UsersController.Registration);
@@ -23,11 +25,13 @@ router.get("/verify-email/:email", UsersController.VerifyEmail);
 router.get("/verify-otp/:email/:otp", UsersController.VerifyOTP);
 router.post("/reset-password", UsersController.ResetPass);
 
+
 //Brands routes
 router.post("/create-brand", AuthVerifyMiddleware, BrandsController.CreateBrand);
 router.post("/update-brand/:id", AuthVerifyMiddleware, BrandsController.UpdateBrand);
 router.get("/brands-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, BrandsController.BrandsList);
 router.get("/brands-dropdown", AuthVerifyMiddleware, BrandsController.BrandsDropDown);
+
 
 //Categories routes
 router.post("/create-category", AuthVerifyMiddleware, CategoriesController.CreateCategory);
@@ -35,17 +39,20 @@ router.post("/update-category/:id", AuthVerifyMiddleware, CategoriesController.U
 router.get("/categories-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, CategoriesController.CategoriesList);
 router.get("/categories-dropdown", AuthVerifyMiddleware, CategoriesController.CategoriesDropDown);
 
+
 //Customers routes
 router.post("/create-customer", AuthVerifyMiddleware, CustomersController.CreateCustomer);
 router.post("/update-customer/:id", AuthVerifyMiddleware, CustomersController.UpdateCustomer);
 router.get("/customers-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, CustomersController.CustomersList);
 router.get("/customers-dropdown", AuthVerifyMiddleware, CustomersController.CustomersDropDown);
 
+
 //Suppliers routes
 router.post("/create-supplier", AuthVerifyMiddleware, SuppliersController.CreateSupplier);
 router.post("/update-supplier/:id", AuthVerifyMiddleware, SuppliersController.UpdateSupplier);
 router.get("/suppliers-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, SuppliersController.SuppliersList);
 router.get("/suppliers-dropdown", AuthVerifyMiddleware, SuppliersController.SuppliersDropDown);
+
 
 //Expense Types routes
 router.post("/create-expense-type", AuthVerifyMiddleware, ExpenseTypesController.CreateExpenseType);
@@ -58,11 +65,14 @@ router.get("/expense-types-dropdown", AuthVerifyMiddleware, ExpenseTypesControll
 router.post("/create-expense", AuthVerifyMiddleware, ExpensesController.CreateExpense);
 router.post("/update-expense/:id", AuthVerifyMiddleware, ExpensesController.UpdateExpense);
 router.get("/expenses-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpensesController.ExpensesList);
+router.get("/expense-delete/:id", AuthVerifyMiddleware, ExpensesController.DeleteExpense);
+
 
 //Products routes
 router.post("/create-product", AuthVerifyMiddleware, ProductsController.CreateProduct);
 router.post("/update-product/:id", AuthVerifyMiddleware, ProductsController.UpdateProduct);
 router.get("/products-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ProductsController.ProductsList);
+
 
 //Purchases routes
 router.post("/create-purchase", AuthVerifyMiddleware, PurchasesController.CreatePurchase);
