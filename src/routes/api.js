@@ -11,6 +11,7 @@ const PurchasesController = require("../controllers/purchases/PurchasesControlle
 const SalesController = require("../controllers/sale/SalesController");
 const ReturnsController = require("../controllers/returns/ReturnsController");
 const ReportController = require("../controllers/report/ReportController");
+const SummaryController = require("../controllers/summary/SummaryController");
 
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 
@@ -91,5 +92,11 @@ router.get("/create-expenses-report", AuthVerifyMiddleware, ReportController.Cre
 router.get("/create-purchases-report", AuthVerifyMiddleware, ReportController.CreatePurchasesReport);
 router.get("/create-returns-report", AuthVerifyMiddleware, ReportController.CreateReturnsReport);
 router.get("/create-sales-report", AuthVerifyMiddleware, ReportController.CreateSalesReport);
+
+//Reports
+router.get("/create-expenses-summary", AuthVerifyMiddleware, SummaryController.CreateExpensesSummary);
+router.get("/create-purchases-summary", AuthVerifyMiddleware, SummaryController.CreatePurchasesSummary);
+router.get("/create-returns-summary", AuthVerifyMiddleware, SummaryController.CreateReturnsSummary);
+router.get("/create-sales-summary", AuthVerifyMiddleware, SummaryController.CreateSalesSummary);
 
 module.exports = router;
