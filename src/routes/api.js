@@ -32,6 +32,7 @@ router.post("/update-brand/:id", AuthVerifyMiddleware, BrandsController.UpdateBr
 router.get("/brands-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, BrandsController.BrandsList);
 router.get("/brands-dropdown", AuthVerifyMiddleware, BrandsController.BrandsDropDown);
 router.get("/delete-brand/:id", AuthVerifyMiddleware, BrandsController.DeleteBrand);
+router.get("/brand-details/:id", AuthVerifyMiddleware, BrandsController.BrandDetailsById);
 
 //Categories routes
 router.post("/create-category", AuthVerifyMiddleware, CategoriesController.CreateCategory);
@@ -39,6 +40,7 @@ router.post("/update-category/:id", AuthVerifyMiddleware, CategoriesController.U
 router.get("/categories-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, CategoriesController.CategoriesList);
 router.get("/categories-dropdown", AuthVerifyMiddleware, CategoriesController.CategoriesDropDown);
 router.get("/delete-category/:id", AuthVerifyMiddleware, CategoriesController.DeleteCategory);
+router.get("/category-details/:id", AuthVerifyMiddleware, CategoriesController.CategoryDetailsById);
 
 //Customers routes
 router.post("/create-customer", AuthVerifyMiddleware, CustomersController.CreateCustomer);
@@ -46,6 +48,7 @@ router.post("/update-customer/:id", AuthVerifyMiddleware, CustomersController.Up
 router.get("/customers-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, CustomersController.CustomersList);
 router.get("/customers-dropdown", AuthVerifyMiddleware, CustomersController.CustomersDropDown);
 router.get("/delete-customer/:id", AuthVerifyMiddleware, CustomersController.DeleteCustomer);
+router.get("/customer-details/:id", AuthVerifyMiddleware, CustomersController.CustomerDetailsById);
 
 //Suppliers routes
 router.post("/create-supplier", AuthVerifyMiddleware, SuppliersController.CreateSupplier);
@@ -53,24 +56,29 @@ router.post("/update-supplier/:id", AuthVerifyMiddleware, SuppliersController.Up
 router.get("/suppliers-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, SuppliersController.SuppliersList);
 router.get("/suppliers-dropdown", AuthVerifyMiddleware, SuppliersController.SuppliersDropDown);
 router.get("/delete-supplier/:id", AuthVerifyMiddleware, SuppliersController.DeleteSupplier);
+router.get("/supplier-details/:id", AuthVerifyMiddleware, SuppliersController.SupplierDetailsById);
 
 //Expense Types routes
 router.post("/create-expense-type", AuthVerifyMiddleware, ExpenseTypesController.CreateExpenseType);
 router.post("/update-expense-type/:id", AuthVerifyMiddleware, ExpenseTypesController.UpdateExpenseType);
 router.get("/expense-types-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypesList);
 router.get("/expense-types-dropdown", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypesDropDown);
+router.get("/expense-type-details/:id", AuthVerifyMiddleware, ExpenseTypesController.ExpenseTypeDetailsById);
+
 
 //Expenses routes
 router.post("/create-expense", AuthVerifyMiddleware, ExpensesController.CreateExpense);
 router.post("/update-expense/:id", AuthVerifyMiddleware, ExpensesController.UpdateExpense);
 router.get("/expenses-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ExpensesController.ExpensesList);
 router.get("/expense-delete/:id", AuthVerifyMiddleware, ExpensesController.DeleteExpense);
+router.get("/expense-details/:id", AuthVerifyMiddleware, ExpensesController.ExpenseDetailsById);
 
 //Products routes
 router.post("/create-product", AuthVerifyMiddleware, ProductsController.CreateProduct);
 router.post("/update-product/:id", AuthVerifyMiddleware, ProductsController.UpdateProduct);
 router.get("/products-list/:pageNo/:perPage/:searchKeyword", AuthVerifyMiddleware, ProductsController.ProductsList);
 router.get("/delete-product/:id", AuthVerifyMiddleware, ProductsController.DeleteProduct);
+router.get("/product-details/:id", AuthVerifyMiddleware, ProductsController.ProductDetailsById);
 
 //Purchases routes
 router.post("/create-purchase", AuthVerifyMiddleware, PurchasesController.CreatePurchase);
@@ -93,7 +101,7 @@ router.get("/create-purchases-report", AuthVerifyMiddleware, ReportController.Cr
 router.get("/create-returns-report", AuthVerifyMiddleware, ReportController.CreateReturnsReport);
 router.get("/create-sales-report", AuthVerifyMiddleware, ReportController.CreateSalesReport);
 
-//Reports
+//Summary
 router.get("/create-expenses-summary", AuthVerifyMiddleware, SummaryController.CreateExpensesSummary);
 router.get("/create-purchases-summary", AuthVerifyMiddleware, SummaryController.CreatePurchasesSummary);
 router.get("/create-returns-summary", AuthVerifyMiddleware, SummaryController.CreateReturnsSummary);

@@ -3,6 +3,7 @@ const CreateService = require("../../services/common/CreateService");
 const UpdateService = require("../../services/common/UpdateService");
 const ListOneJoinService = require("../../services/common/ListOneJoinService");
 const DeleteService = require("../../services/common/DeleteService");
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
 
 exports.CreateExpense = async (req, res) => {
     let result = await CreateService(req, DataModel)
@@ -11,6 +12,11 @@ exports.CreateExpense = async (req, res) => {
 
 exports.UpdateExpense = async (req, res) => {
     let result = await UpdateService(req, DataModel)
+    res.status(200).json(result)
+};
+
+exports.ExpenseDetailsById = async (req, res) => {
+    let result = await DetailsByIdService(req, DataModel)
     res.status(200).json(result)
 };
 

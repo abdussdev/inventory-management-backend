@@ -7,6 +7,8 @@ const UpdateService = require("../../services/common/UpdateService");
 const ListTwoJoinService = require("../../services/common/ListTwoJoinService");
 const DeleteService = require("../../services/common/DeleteService");
 const CheckAssociateService = require("../../services/common/CheckAssociateService");
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
+
 const mongoose = require("mongoose");
 
 exports.CreateProduct = async (req, res) => {
@@ -16,6 +18,11 @@ exports.CreateProduct = async (req, res) => {
 
 exports.UpdateProduct = async (req, res) => {
     let result = await UpdateService(req, DataModel)
+    res.status(200).json(result)
+};
+
+exports.ProductDetailsById = async (req, res) => {
+    let result = await DetailsByIdService(req, DataModel)
     res.status(200).json(result)
 };
 

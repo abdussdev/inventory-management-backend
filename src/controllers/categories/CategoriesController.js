@@ -6,6 +6,8 @@ const ListService = require("../../services/common/ListService");
 const UpdateService = require("../../services/common/UpdateService");
 const DeleteService = require("../../services/common/DeleteService");
 const CheckAssociateService = require("../../services/common/CheckAssociateService");
+const DetailsByIdService = require("../../services/common/DetailsByIdService");
+
 const mongoose = require("mongoose");
 
 exports.CreateCategory = async (req, res) => {
@@ -15,6 +17,11 @@ exports.CreateCategory = async (req, res) => {
 
 exports.UpdateCategory = async (req, res) => {
     let result = await UpdateService(req, DataModel)
+    res.status(200).json(result)
+};
+
+exports.CategoryDetailsById = async (req, res) => {
+    let result = await DetailsByIdService(req, DataModel)
     res.status(200).json(result)
 };
 
